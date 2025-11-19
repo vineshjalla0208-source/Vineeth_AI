@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vineeth AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+  <div class="app-container">
+    <!-- Light/Dark Mode Toggle -->
+    <button id="themeToggle" class="theme-toggle" title="Toggle theme">🌙</button>
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1 class="app-name">Vineeth AI</h1>
+      </div>
+      <nav class="sidebar-menu">
+        <a href="#" class="menu-item active">
+          <span class="menu-icon">🏠</span>
+          <span class="menu-text">Home</span>
+        </a>
+        <a href="#" class="menu-item">
+          <span class="menu-icon">💬</span>
+          <span class="menu-text">Chats</span>
+        </a>
+        <a href="#" class="menu-item">
+          <span class="menu-icon">🔍</span>
+          <span class="menu-text">Search</span>
+        </a>
+        <a href="#" class="menu-item">
+          <span class="menu-icon">⚙️</span>
+          <span class="menu-text">Settings</span>
+        </a>
+        <a href="#" class="menu-item">
+          <span class="menu-icon">📁</span>
+          <span class="menu-text">Projects</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Welcome Screen -->
+      <div id="welcomeScreen" class="welcome-screen">
+        <h2 class="welcome-title">Vineeth AI</h2>
+        <p class="welcome-subtitle">Ask anything…</p>
+      </div>
+
+      <!-- Chat Window (hidden initially) -->
+      <div id="chatBox" class="chat-window" style="display: none;"></div>
+    </main>
+
+    <!-- Input Area - Fixed at Bottom with Glassmorphism -->
+    <footer class="input-area">
+      <div class="input-inner">
+        <div class="input-left-icons">
+          <button class="input-icon-btn" title="Search">🔍</button>
+          <button class="input-icon-btn" title="Quick Action">⚡</button>
+          <button class="input-icon-btn" title="Image">🖼️</button>
+          <button class="input-icon-btn" title="Globe">🌐</button>
+          <button class="input-icon-btn" title="Mic">🎤</button>
+        </div>
+        <input id="userInput" type="text" placeholder="Ask anything…" />
+        <button id="sendBtn" class="send-btn" title="Send">➤</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
