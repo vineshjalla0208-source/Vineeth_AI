@@ -138,12 +138,25 @@ body {
   color: var(--text-primary);
   margin-bottom: 12px;
   letter-spacing: -1px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .welcome-subtitle {
   font-size: 20px;
   color: var(--text-secondary);
   font-weight: 400;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Chat Container */
@@ -200,6 +213,48 @@ body {
   border-bottom-left-radius: 4px;
 }
 
+/* Loading Dots Animation */
+.message.loading {
+  background: var(--message-bot);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.message.loading .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  animation: loadingDot 1.4s infinite ease-in-out;
+}
+
+.message.loading .dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.message.loading .dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.message.loading .dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loadingDot {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
 /* Bottom Input Bar */
 .input-bar {
   position: fixed;
@@ -223,6 +278,12 @@ body {
   border-radius: 24px;
   padding: 12px 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(75, 139, 255, 0.2);
 }
 
 .input-icon {
@@ -244,6 +305,7 @@ body {
 .input-icon:hover {
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+  transform: scale(1.1);
 }
 
 #userInput {
@@ -259,6 +321,11 @@ body {
 
 #userInput::placeholder {
   color: var(--text-secondary);
+}
+
+#userInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .send-button {
@@ -277,14 +344,19 @@ body {
   box-shadow: 0 2px 8px rgba(75, 139, 255, 0.3);
 }
 
-.send-button:hover {
+.send-button:hover:not(:disabled) {
   background: var(--accent-hover);
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(75, 139, 255, 0.4);
 }
 
-.send-button:active {
+.send-button:active:not(:disabled) {
   transform: scale(0.95);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .send-button svg {
@@ -293,36 +365,23 @@ body {
 }
 
 /* Scrollbar Styling */
-.chat-container::-webkit-scrollbar {
+.chat-container::-webkit-scrollbar,
+.sidebar-menu::-webkit-scrollbar {
   width: 8px;
 }
 
-.chat-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.chat-container::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-.chat-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.sidebar-menu::-webkit-scrollbar {
-  width: 6px;
-}
-
+.chat-container::-webkit-scrollbar-track,
 .sidebar-menu::-webkit-scrollbar-track {
   background: transparent;
 }
 
+.chat-container::-webkit-scrollbar-thumb,
 .sidebar-menu::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
+.chat-container::-webkit-scrollbar-thumb:hover,
 .sidebar-menu::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
